@@ -1,0 +1,322 @@
+[
+  {
+    "source": "01_foundations.md",
+    "code": "import sys\nprint(sys.executable)\nprint(sys.version)"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "import os\nos.environ[\"KERAS_BACKEND\"] = \"tensorflow\"\nimport keras"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "epochs = 5\nlearning_rate = 1e-3\nactivation_name = \"relu\"\nuse_bias = True\nactivation = None"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "pixels = 28 * 28\nprint(pixels, type(pixels))\nprint(5 / 2, 5 // 2, 5 % 2, 2 ** 3)"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "units = [512, 10]\nshape = (28, 28)\none_axis = (10,)\nhistory = {\"loss\": [0.8, 0.4, 0.2]}\nprint(units[0], shape[-1], history[\"loss\"][-1])"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "first = [1, 2]\nsecond = first\nsecond[0] = 99\nprint(first)              # [99, 2]\nsecond = [7, 8]\nprint(first)              # [99, 2]"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "import numpy as np\nfrom keras import layers\nfrom keras.datasets import mnist"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "import numpy as np\nx = np.zeros((2, 3), dtype=\"float32\")\nprint(x.shape)"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "(train_images, train_labels), (test_images, test_labels) = (\n    mnist.load_data()\n)"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "(train_x, train_y), (test_x, test_y) = ((\"A\", \"B\"), (\"C\", \"D\"))\nprint(train_x, train_y, test_x, test_y)"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "import keras\nfrom keras import layers\n\nmodel = keras.Sequential(\n    [\n        layers.Dense(512, activation=\"relu\"),\n        layers.Dense(10, activation=\"softmax\"),\n    ]\n)"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "model.compile(\n    optimizer=\"adam\",\n    loss=\"sparse_categorical_crossentropy\",\n    metrics=[\"accuracy\"],\n)"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "train_images = train_images.reshape((60000, 28 * 28))\ntrain_images = train_images.astype(\"float32\") / 255\ntest_images = test_images.reshape((10000, 28 * 28))\ntest_images = test_images.astype(\"float32\") / 255"
+  },
+  {
+    "source": "01_foundations.md",
+    "code": "history = model.fit(\n    train_images, train_labels, epochs=5, batch_size=128\n)\ntest_digits = test_images[0:10]\npredictions = model.predict(test_digits)\npredicted_class = predictions[0].argmax()\ntest_loss, test_acc = model.evaluate(test_images, test_labels)\nprint(f\"test_acc: {test_acc:.3f}\")"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "scalar = np.array(12)\nvector = np.array([12, 3, 6, 14, 7])\nmatrix = np.array([[1, 2, 3], [4, 5, 6]])\nprint(scalar.shape, scalar.ndim)\nprint(vector.shape, vector.ndim)\nprint(matrix.shape, matrix.ndim)"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "train_images = train_images.reshape((60000, 28 * 28))\ntrain_images = train_images.astype(\"float32\") / 255"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "import matplotlib.pyplot as plt\n\ndigit = train_images[4]\nplt.imshow(digit, cmap=plt.cm.binary)\nplt.show()"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "images = np.arange(3 * 4 * 4).reshape((3, 4, 4))\nprint(images[0].shape)\nprint(images[0:1].shape)\nprint(images[:, 2:, 2:].shape)\nprint(images[:, 1:-1, 1:-1].shape)"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "original = np.arange(5)\nview = original[1:4]\nview[0] = 99\nindependent = original[1:4].copy()\nindependent[0] = -1\nprint(original)"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "def naive_relu(x):\n    assert len(x.shape) == 2\n    x = x.copy()\n    for i in range(x.shape[0]):\n        for j in range(x.shape[1]):\n            x[i, j] = max(x[i, j], 0)\n    return x"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "values = np.array([[-2, 3], [0, -4]])\nresult = naive_relu(values)\nprint(result.tolist())\nprint(values.tolist())\nassert np.array_equal(result, np.maximum(values, 0))"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "x = np.array([[1, 2, 3], [4, 5, 6]])\nbias = np.array([10, 20, 30])\nprint(x + bias)\nrow = np.expand_dims(bias, axis=0)\nrepeated = np.tile(row, (2, 1))\nassert row.shape == (1, 3)\nassert np.array_equal(x + bias, x + repeated)"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "a = np.array([1, 2, 3])\nb = np.array([10, 20, 30])\nprint(a * b)\nprint(a @ b)\nmatrix = np.array([[1, 2, 3], [4, 5, 6]])\nprint(matrix @ b)"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "x = np.array([[0., 1.], [2., 3.], [4., 5.]])\nprint(x.reshape((2, 3)))\nprint(x.T)"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "class NaiveDense:\n    def __init__(self, input_size, output_size, activation=None):\n        self.activation = activation\n        self.W = keras.Variable(\n            shape=(input_size, output_size), initializer=\"uniform\"\n        )\n        self.b = keras.Variable(shape=(output_size,), initializer=\"zeros\")\n\n    def __call__(self, inputs):\n        x = ops.matmul(inputs, self.W) + self.b\n        if self.activation is not None:\n            x = self.activation(x)\n        return x\n\n    @property\n    def weights(self):\n        return [self.W, self.b]"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "class NaiveSequential:\n    def __init__(self, layers):\n        self.layers = layers\n\n    def __call__(self, inputs):\n        x = inputs\n        for layer in self.layers:\n            x = layer(x)\n        return x\n\n    @property\n    def weights(self):\n        weights = []\n        for layer in self.layers:\n            weights += layer.weights\n        return weights"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "import math\n\nclass BatchGenerator:\n    def __init__(self, images, labels, batch_size=128):\n        self.index = 0\n        self.images = images\n        self.labels = labels\n        self.batch_size = batch_size\n        self.num_batches = math.ceil(len(images) / batch_size)\n\n    def next(self):\n        images = self.images[self.index:self.index + self.batch_size]\n        labels = self.labels[self.index:self.index + self.batch_size]\n        self.index += self.batch_size\n        return images, labels"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "class Batches:\n    def __init__(self, images, labels, size=4):\n        if len(images) != len(labels) or size <= 0:\n            raise ValueError(\"Check lengths and positive batch size\")\n        self.images, self.labels = images, labels\n        self.size, self.index = size, 0\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.index >= len(self.images):\n            raise StopIteration\n        start = self.index\n        self.index += self.size\n        return (self.images[start:self.index],\n                self.labels[start:self.index])"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "import tensorflow as tf\n\nx = tf.zeros(shape=())\nwith tf.GradientTape() as tape:\n    tape.watch(x)\n    y = 2 * x + 3\ngradient = tape.gradient(y, x)\nprint(float(gradient))"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "import keras\nfrom keras import ops\n\nlearning_rate = 1e-3\n\ndef update_weights(gradients, weights):\n    for g, w in zip(gradients, weights):\n        w.assign(w - g * learning_rate)\n\ndef one_training_step(model, images_batch, labels_batch):\n    with tf.GradientTape() as tape:\n        predictions = model(images_batch)\n        losses = ops.sparse_categorical_crossentropy(\n            labels_batch, predictions\n        )\n        average_loss = ops.mean(losses)\n    gradients = tape.gradient(average_loss, model.weights)\n    update_weights(gradients, model.weights)\n    return average_loss"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "model = NaiveSequential([\n    NaiveDense(28 * 28, 512, activation=ops.relu),\n    NaiveDense(512, 10, activation=ops.softmax),\n])\nassert len(model.weights) == 4"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "def fit(model, images, labels, epochs, batch_size=128):\n    for epoch_counter in range(epochs):\n        print(f\"Epoch {epoch_counter + 1}\")\n        batches = BatchGenerator(images, labels, batch_size)\n        for batch_counter in range(batches.num_batches):\n            images_batch, labels_batch = batches.next()\n            loss = one_training_step(\n                model, images_batch, labels_batch\n            )\n            if batch_counter % 100 == 0:\n                value = float(loss)\n                print(f\"loss at batch {batch_counter}: {value:.2f}\")"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "predictions = model(test_images)\npredicted_labels = ops.argmax(predictions, axis=1)\nmatches = ops.equal(predicted_labels, test_labels)\naccuracy = ops.mean(ops.cast(matches, \"float32\"))\nprint(f\"accuracy: {float(accuracy):.2f}\")"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "x = np.arange(12).reshape((3, 4))\noffsets = np.array([10, 20, 30])[:, None]\nresult = x + offsets\nassert result.tolist() == [\n    [10, 11, 12, 13],\n    [24, 25, 26, 27],\n    [38, 39, 40, 41],\n]"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "def row_sums(x):\n    if x.ndim != 2:\n        raise ValueError(\"Expected a matrix\")\n    totals = np.zeros(x.shape[0], dtype=\"float64\")\n    for i in range(x.shape[0]):\n        for j in range(x.shape[1]):\n            totals[i] += x[i, j]\n    return totals\n\nx = np.array([[1, -2, 3], [-4, 5, 6]])\nbefore = x.copy()\nassert np.array_equal(row_sums(x), [2, 7])\nassert np.array_equal(row_sums(x), x.sum(axis=1))\nassert np.array_equal(x, before)"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "class Shift:\n    def __init__(self, amount):\n        self.amount = amount\n\n    def __call__(self, value):\n        return value + self.amount\n\n    @property\n    def description(self):\n        return f\"Add {self.amount}\"\n\nsmall = Shift(2)\nlarge = Shift(10)\nassert small(3) == 5\nassert large(3) == 13\nassert small.description == \"Add 2\""
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "iterator = Batches(np.arange(10), np.arange(10), size=4)\nseen = [(len(x), y.tolist()) for x, y in iterator]\nassert seen == [\n    (4, [0, 1, 2, 3]),\n    (4, [4, 5, 6, 7]),\n    (2, [8, 9]),\n]\nassert list(iterator) == []"
+  },
+  {
+    "source": "02_chapter2.md",
+    "code": "probabilities = np.array([[0.1, 0.9], [0.8, 0.2], [0.3, 0.7]])\nlabels = np.array([1, 0, 0])\npredicted = probabilities.argmax(axis=1)\naccuracy = (predicted == labels).astype(\"float32\").mean()\nprint(predicted.tolist())\nprint(f\"{accuracy:.2f}\")"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "import tensorflow as tf\n\nx = tf.ones(shape=(2, 1))\nprint(x.shape)\nprint(x.dtype)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "import numpy as np\n\nn = 1000\nrng = np.random.default_rng(1337)\nnegative = rng.multivariate_normal(\n    mean=[0, 3], cov=[[1, 0.5], [0.5, 1]], size=n\n)\npositive = rng.multivariate_normal(\n    mean=[3, 0], cov=[[1, 0.5], [0.5, 1]], size=n\n)\ninputs = np.vstack((negative, positive)).astype(\"float32\")\ntargets = np.vstack((\n    np.zeros((n, 1), dtype=\"float32\"),\n    np.ones((n, 1), dtype=\"float32\"),\n))\nassert inputs.shape == (2 * n, 2)\nassert targets.shape == (2 * n, 1)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "import matplotlib.pyplot as plt\n\nplt.scatter(inputs[:, 0], inputs[:, 1], c=targets[:, 0])\nplt.xlabel(\"Feature 0\")\nplt.ylabel(\"Feature 1\")\nplt.show()"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "import tensorflow as tf\n\nv = tf.Variable(tf.zeros((3, 1)))\nalias = v\nv.assign(tf.ones((3, 1)))\nv[0, 0].assign(3.0)\nv.assign_add(tf.ones((3, 1)))"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "x = tf.Variable(3.0)\nwith tf.GradientTape() as tape:\n    result = tf.square(x)\ngradient = tape.gradient(result, x)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "time = tf.Variable(0.0)\nwith tf.GradientTape() as outer_tape:\n    with tf.GradientTape() as inner_tape:\n        position = 4.9 * time**2\n    speed = inner_tape.gradient(position, time)\nacceleration = outer_tape.gradient(speed, time)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "W = tf.Variable(tf.random.uniform((2, 1)))\nb = tf.Variable(tf.zeros((1,)))\nlearning_rate = 0.1\n\ndef linear_tf(inputs, W, b):\n    return tf.matmul(inputs, W) + b\n\ndef mse_tf(targets, predictions):\n    return tf.reduce_mean(tf.square(targets - predictions))"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "def step_tf(inputs, targets, W, b):\n    with tf.GradientTape() as tape:\n        predictions = linear_tf(inputs, W, b)\n        loss = mse_tf(targets, predictions)\n    grad_W, grad_b = tape.gradient(loss, [W, b])\n    W.assign_sub(learning_rate * grad_W)\n    b.assign_sub(learning_rate * grad_b)\n    return loss\n\nfor step in range(40):\n    loss = step_tf(inputs, targets, W, b)\n    print(f\"Step {step}: {float(loss):.4f}\")"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "@tf.function\ndef twice(x):\n    return 2 * x"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "import torch\n\nx = torch.tensor(3.0, requires_grad=True)\ntorch.square(x).backward()\nprint(x.grad)                    # tensor(6.)\ntorch.square(x).backward()\nprint(x.grad)                    # tensor(12.)\nx.grad = None"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "torch_inputs = torch.tensor(inputs, dtype=torch.float32)\ntorch_targets = torch.tensor(targets, dtype=torch.float32)\nW = torch.rand(2, 1, requires_grad=True)\nb = torch.zeros(1, requires_grad=True)\nlearning_rate = 0.1\n\ndef linear_torch(inputs, W, b):\n    return inputs @ W + b\n\ndef mse_torch(targets, predictions):\n    return torch.mean(torch.square(targets - predictions))"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "def step_torch(inputs, targets, W, b):\n    predictions = linear_torch(inputs, W, b)\n    loss = mse_torch(targets, predictions)\n    loss.backward()\n    with torch.no_grad():\n        W -= learning_rate * W.grad\n        b -= learning_rate * b.grad\n    W.grad = None\n    b.grad = None\n    return loss\n\nfor step in range(40):\n    loss = step_torch(torch_inputs, torch_targets, W, b)\n    print(f\"Step {step}: {loss.item():.4f}\")"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "class LinearModel(torch.nn.Module):\n    def __init__(self, input_dim=2, output_dim=1):\n        super().__init__()\n        self.W = torch.nn.Parameter(\n            torch.rand(input_dim, output_dim)\n        )\n        self.b = torch.nn.Parameter(torch.zeros(output_dim))\n\n    def forward(self, inputs):\n        return inputs @ self.W + self.b\n\ntorch_model = LinearModel()\noptimizer = torch.optim.SGD(torch_model.parameters(), lr=0.1)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "def step_module(inputs, targets):\n    optimizer.zero_grad(set_to_none=True)\n    predictions = torch_model(inputs)\n    loss = mse_torch(targets, predictions)\n    loss.backward()\n    optimizer.step()\n    return loss"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "import jax\nfrom jax import numpy as jnp\n\nx = jnp.array([1, 2, 3], dtype=\"float32\")\nold_x = x\nnew_x = x.at[0].set(10)\nx = x * 2"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "def apply_noise(x, seed):\n    rng = np.random.default_rng(seed)\n    return x * rng.normal(size=x.shape)\n\nx = np.ones(3, dtype=\"float32\")\ny = apply_noise(x, 1337)\nz = apply_noise(x, 1338)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "key = jax.random.key(1337)\nkey, draw_key = jax.random.split(key)\nnoise = jax.random.normal(draw_key, shape=(3,))\nkey, next_draw_key = jax.random.split(key)\nnext_noise = jax.random.normal(next_draw_key, shape=(3,))"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "def square_loss(x):\n    return jnp.square(x)\n\ngrad_fn = jax.grad(square_loss)\ngradient = grad_fn(jnp.array(3.0))\nvalue_and_grad_fn = jax.value_and_grad(square_loss)\nvalue, gradient = value_and_grad_fn(jnp.array(3.0))"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "def loss_jax(state, inputs, targets):\n    W, b = state\n    predictions = inputs @ W + b\n    return jnp.mean(jnp.square(targets - predictions))\n\nloss_and_grads_jax = jax.value_and_grad(loss_jax)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "jax_inputs = jnp.asarray(inputs)\njax_targets = jnp.asarray(targets)\nkey = jax.random.key(1337)\nW = jax.random.uniform(key, shape=(2, 1))\nb = jnp.zeros((1,), dtype=\"float32\")\nlearning_rate = 0.1\n\n@jax.jit\ndef step_jax(inputs, targets, W, b):\n    loss, grads = loss_and_grads_jax((W, b), inputs, targets)\n    grad_W, grad_b = grads\n    W = W - learning_rate * grad_W\n    b = b - learning_rate * grad_b\n    return loss, W, b\n\nfor step in range(40):\n    loss, W, b = step_jax(jax_inputs, jax_targets, W, b)\n    print(f\"Step {step}: {float(loss):.4f}\")"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "import os\nos.environ[\"KERAS_BACKEND\"] = \"jax\"\nimport keras"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "class SimpleDense(keras.Layer):\n    def __init__(self, units, activation=None):\n        super().__init__()\n        self.units = units\n        self.activation = keras.activations.get(activation)\n    def build(self, input_shape):\n        input_dim = input_shape[-1]\n        self.W = self.add_weight(\n            shape=(input_dim, self.units),\n            initializer=\"random_normal\",\n        )\n        self.b = self.add_weight(\n            shape=(self.units,), initializer=\"zeros\"\n        )\n    def call(self, inputs):\n        y = keras.ops.matmul(inputs, self.W) + self.b\n        return self.activation(y)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "layer = SimpleDense(32, activation=\"relu\")\nx = keras.ops.ones((2, 784))\ny = layer(x)\nprint(y.shape)                         # (2, 32)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "keras_model = keras.Sequential([\n    SimpleDense(32, activation=\"relu\"),\n    SimpleDense(10, activation=\"softmax\"),\n])"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "keras_model = keras.Sequential([keras.layers.Dense(1)])\nkeras_model.compile(\n    optimizer=keras.optimizers.RMSprop(learning_rate=0.1),\n    loss=keras.losses.MeanSquaredError(),\n    metrics=[keras.metrics.BinaryAccuracy()],\n)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "permutation = rng.permutation(len(inputs))\nshuffled_inputs = inputs[permutation]\nshuffled_targets = targets[permutation]\n\nn_val = int(0.3 * len(inputs))\nval_inputs = shuffled_inputs[:n_val]\nval_targets = shuffled_targets[:n_val]\ntrain_inputs = shuffled_inputs[n_val:]\ntrain_targets = shuffled_targets[n_val:]"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "history = keras_model.fit(\n    train_inputs, train_targets,\n    epochs=5, batch_size=16,\n    validation_data=(val_inputs, val_targets),\n)\nlosses = history.history[\"loss\"]\nlast_loss = losses[-1]\npredictions = keras_model.predict(val_inputs, batch_size=128)\nprint(predictions[:10])"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "for name, values in history.history.items():\n    print(f\"{name}: final value = {values[-1]:.4f}\")"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "p = np.array([[10.], [20.], [30.], [40.]])\nt = np.array([1., 2., 3., 4.])\nassert (t - p).shape == (4, 4)\nt = t.reshape(-1, 1)\nassert (t - p).shape == (4, 1)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "x = torch.tensor(2.0, requires_grad=True)\nfor _ in range(3):\n    x.grad = None\n    loss = x**2\n    loss.backward()\n    print(x.grad.item())              # 4.0 every time"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "@jax.jit\ndef step_state(state, inputs, targets):\n    loss, grads = loss_and_grads_jax(state, inputs, targets)\n    W, b = state\n    grad_W, grad_b = grads\n    new_state = (\n        W - learning_rate * grad_W,\n        b - learning_rate * grad_b,\n    )\n    return loss, new_state\n\nstate = (W, b)\nfor _ in range(40):\n    loss, state = step_state(state, jax_inputs, jax_targets)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "rows = np.arange(5).reshape(-1, 1)\nlabels = 10 * rows\norder = np.random.default_rng(7).permutation(len(rows))\nrows, labels = rows[order], labels[order]\nval_x, val_y = rows[:2], labels[:2]\ntrain_x, train_y = rows[2:], labels[2:]\nassert np.array_equal(val_y, 10 * val_x)\nassert np.array_equal(train_y, 10 * train_x)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "for activation in (None, \"relu\", keras.ops.relu):\n    layer = SimpleDense(5, activation=activation)\n    result = layer(keras.ops.ones((4, 3)))\n    assert tuple(result.shape) == (4, 5)"
+  },
+  {
+    "source": "03_chapter3.md",
+    "code": "logs = {\n    \"loss\": [0.8, 0.4, 0.3],\n    \"val_loss\": [0.9, 0.5, 0.6],\n}\nval_losses = logs[\"val_loss\"]\nbest_index = min(range(len(val_losses)), key=val_losses.__getitem__)\nprint(best_index + 1)                 # 2"
+  },
+  {
+    "source": "04_practice.md",
+    "code": "import os\nfrom IPython.core.magic import register_cell_magic\n\n@register_cell_magic\ndef backend(line, cell):\n    current = os.environ.get(\"KERAS_BACKEND\", \"\")\n    required = line.split()[-1]\n    if current == required:\n        get_ipython().run_cell(cell)\n    else:\n        print(\n            f\"This cell requires the {required} backend. \"\n            f\"Set KERAS_BACKEND to \\\"{required}\\\", \"\n            \"restart the runtime, and rerun the notebook.\"\n        )"
+  },
+  {
+    "source": "04_practice.md",
+    "code": "print(type(inputs))\nprint(inputs.shape)\nprint(inputs.dtype)\nprint(type(model))"
+  },
+  {
+    "source": "04_practice.md",
+    "code": "import numpy as np\ntargets = np.array([0.0, 1.0, 0.0])\npredictions = np.array([[0.1], [0.9], [0.2]])\nwrong = targets - predictions\nright = targets.reshape((-1, 1)) - predictions\nprint(wrong.shape, right.shape)"
+  },
+  {
+    "source": "04_practice.md",
+    "code": "def require_positive_batch_size(batch_size):\n    if batch_size <= 0:\n        raise ValueError(\"batch_size must be positive\")\n    return batch_size"
+  },
+  {
+    "source": "04_practice.md",
+    "code": "import numpy as np\n\nimages = np.array([\n    [[0, 255], [0, 255]],\n    [[255, 0], [255, 0]],\n    [[0, 128], [0, 128]],\n    [[128, 0], [128, 0]],\n    [[0, 0], [0, 0]],\n], dtype=\"uint8\")\nlabels = np.array([1, 0, 1, 0, 1])\noriginal = images.copy()\n\ndef prepare(images):\n    flat = images.reshape((len(images), -1))\n    return flat.astype(\"float32\") / 255\n\nfeatures = prepare(images)\nassert features.shape == (5, 4)\nassert features.dtype == np.float32\nassert np.array_equal(images, original)"
+  },
+  {
+    "source": "04_practice.md",
+    "code": "class TinyDense:\n    def __init__(self, W, b):\n        self.W = W.copy()\n        self.b = b.copy()\n\n    def __call__(self, inputs):\n        return inputs @ self.W + self.b\n\n    @property\n    def weights(self):\n        return [self.W, self.b]\n\nW = np.array([\n    [1, -1], [-1, 1], [1, -1], [-1, 1]\n], dtype=\"float32\")\nb = np.zeros((2,), dtype=\"float32\")\nmodel = TinyDense(W, b)\nassert len(model.weights) == 2"
+  },
+  {
+    "source": "04_practice.md",
+    "code": "def take_batch(features, labels, start, batch_size):\n    if batch_size <= 0:\n        raise ValueError(\"batch_size must be positive\")\n    stop = start + batch_size\n    return features[start:stop], labels[start:stop]\n\nbatch_lengths = []\nfor start in range(0, len(features), 2):\n    x_batch, y_batch = take_batch(features, labels, start, 2)\n    scores = model(x_batch)\n    batch_lengths.append(len(x_batch))\n    assert scores.shape == (len(y_batch), 2)\n\nassert batch_lengths == [2, 2, 1]"
+  },
+  {
+    "source": "04_practice.md",
+    "code": "def evaluate(model, features, labels):\n    scores = model(features)\n    predicted = scores.argmax(axis=1)\n    accuracy = float(np.mean(predicted == labels))\n    return accuracy, predicted\n\naccuracy, predicted = evaluate(model, features, labels)\nprint(predicted.tolist())\nprint(f\"Accuracy: {accuracy:.1%}\")\nassert predicted.tolist() == [1, 0, 1, 0, 0]\nassert np.isclose(accuracy, 0.8)"
+  }
+]

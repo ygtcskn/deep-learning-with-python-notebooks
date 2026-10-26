@@ -1,0 +1,632 @@
+[
+  {
+    "chapter": 2,
+    "cell": 1,
+    "topic": "Notebook shell escapes and dependencies",
+    "critical_note": "!pip is IPython syntax, not valid ordinary .py syntax. Prefer %pip in a notebook when teaching interpreter-targeted installation; neither is ordinary Python."
+  },
+  {
+    "chapter": 2,
+    "cell": 2,
+    "topic": "Import, module attributes, string literals and mapping assignment",
+    "critical_note": "os.environ is mapping-like; bracket assignment sets an environment variable string. Select KERAS_BACKEND before importing Keras and restart after changing it."
+  },
+  {
+    "chapter": 2,
+    "cell": 3,
+    "topic": "Comment, decorator and helper function",
+    "critical_note": "@register_cell_magic registers a function with IPython. # @title is a notebook UI comment, not Python behavior. get_ipython() is supplied by IPython, not a Python built-in."
+  },
+  {
+    "chapter": 2,
+    "cell": 3,
+    "topic": "Mapping .get, defaults, split and negative indexing",
+    "critical_note": "os.environ.get('KERAS_BACKEND', '') avoids KeyError. line.split() separates whitespace; [-1] selects last token and raises IndexError if no tokens exist."
+  },
+  {
+    "chapter": 2,
+    "cell": 3,
+    "topic": "Parallel assignment, comparisons, conditional blocks, f-strings and adjacent literal concatenation",
+    "critical_note": "current, required = expression, expression unpacks two values. == compares values. Adjacent f-strings inside parentheses concatenate; backslash-quote embeds a quote. run_cell executes a string as notebook code."
+  },
+  {
+    "chapter": 2,
+    "cell": 6,
+    "topic": "From-import, function calls, return values and nested unpacking",
+    "critical_note": "The loader returns ((images, labels), (images, labels)). Commas create tuples; parentheses group nested targets. Assignment binds names to objects."
+  },
+  {
+    "chapter": 2,
+    "cell": 7,
+    "topic": "Attributes versus methods and notebook expression display",
+    "critical_note": "shape is an attribute and has no call parentheses. A bare final expression is displayed by the notebook but not printed when executed as a script."
+  },
+  {
+    "chapter": 2,
+    "cell": 8,
+    "topic": "Built-in len",
+    "critical_note": "len(train_labels) is the first-axis size, not the number of scalar values of an arbitrary multidimensional tensor."
+  },
+  {
+    "chapter": 2,
+    "cell": 13,
+    "topic": "Lists, constructors, nesting, keyword arguments and trailing commas",
+    "critical_note": "The list holds two layer objects in order. Dense(...) and Sequential(...) construct objects; activation='relu' passes a string that built-in Dense resolves."
+  },
+  {
+    "chapter": 2,
+    "cell": 14,
+    "topic": "Bound method calls and string identifiers",
+    "critical_note": "model.compile configures training; metrics=['accuracy'] is a one-item list. Keras compile is distinct from Python compilation and JIT decorators."
+  },
+  {
+    "chapter": 2,
+    "cell": 15,
+    "topic": "Chained arithmetic, reshaping, dtype casting and rebinding",
+    "critical_note": "28 * 28 is evaluated before reshape. astype creates a converted array and /255 scales values. Repeating normalization divides twice. reshape preserves element count; it does not resize data."
+  },
+  {
+    "chapter": 2,
+    "cell": 16,
+    "topic": "Stateful methods, epochs and batches",
+    "critical_note": "fit changes model weights. Re-running continues from existing weights unless a new model is created."
+  },
+  {
+    "chapter": 2,
+    "cell": 17,
+    "topic": "Slices, exclusive stop and rank",
+    "critical_note": "test_images[0:10] selects up to ten rows; it does not include row 10. Basic NumPy slicing usually returns a view."
+  },
+  {
+    "chapter": 2,
+    "cell": 18,
+    "topic": "Method reduction and default axis",
+    "critical_note": "predictions[0].argmax() returns the position of a largest entry. With no axis, argmax considers a flattened array; for one row this is the class position."
+  },
+  {
+    "chapter": 2,
+    "cell": 19,
+    "topic": "Chained indexing",
+    "critical_note": "predictions[0][7] takes row zero then entry seven; for NumPy this scalar can also be written predictions[0, 7]."
+  },
+  {
+    "chapter": 2,
+    "cell": 21,
+    "topic": "Return tuple unpacking and string interpolation",
+    "critical_note": "evaluate returns values matching configured loss/metrics; two-target unpacking assumes exactly two values. f-string braces evaluate expressions."
+  },
+  {
+    "chapter": 2,
+    "cell": 24,
+    "topic": "Import alias, NumPy construction and rank-zero arrays",
+    "critical_note": "import numpy as np binds a module alias. np.array(12) is a zero-dimensional ndarray, not a Python int; it has shape ()."
+  },
+  {
+    "chapter": 2,
+    "cell": 27,
+    "topic": "List literals and array conversion",
+    "critical_note": "A Python list is a general container. np.array([12,3,...]) produces a typed numeric array; array arithmetic differs from list concatenation/repetition."
+  },
+  {
+    "chapter": 2,
+    "cell": 30,
+    "topic": "Nested lists, axis lengths, rank and dtype",
+    "critical_note": "Rectangular nested lists describe dimensions. ndim counts axes, shape gives axis sizes, dtype describes scalar storage."
+  },
+  {
+    "chapter": 2,
+    "cell": 35,
+    "topic": "Notebook state reset and repeated loading",
+    "critical_note": "Reloading MNIST rebinds train_images to raw uint8 shape (60000,28,28), replacing the earlier normalized flat array."
+  },
+  {
+    "chapter": 2,
+    "cell": 39,
+    "topic": "Dotted names, imported submodule aliases and plotting",
+    "critical_note": "plt.cm.binary is an attribute reached through a module-like namespace. cmap receives that object; plt.show() displays pending plots."
+  },
+  {
+    "chapter": 2,
+    "cell": 42,
+    "topic": "Basic slicing and aliases",
+    "critical_note": "A slice can share storage with train_images. Rebinding my_slice does not modify the source; writing my_slice[...] can."
+  },
+  {
+    "chapter": 2,
+    "cell": 43,
+    "topic": "Multiaxis indexing and full slices",
+    "critical_note": "Commas inside brackets select separate axes; : selects all values on one axis. Explicit : stops may be omitted."
+  },
+  {
+    "chapter": 2,
+    "cell": 45,
+    "topic": "Omitted bounds and negative bounds",
+    "critical_note": "[:,14:,14:] selects lower-right crops. [:,7:-7,7:-7] removes seven rows/columns at each edge; -7 counts backward from the axis end."
+  },
+  {
+    "chapter": 2,
+    "cell": 50,
+    "topic": "Arithmetic inside index bounds",
+    "critical_note": "Slice bounds are integer expressions. At n=3, [128*n:128*(n+1)] means [384:512]. Whitespace around slice colons does not change semantics."
+  },
+  {
+    "chapter": 2,
+    "cell": 58,
+    "topic": "Function definition, parameters, assert, indentation, loops and return",
+    "critical_note": "A def creates a function; body runs on call. range(stop) excludes stop. Nested loops visit pairs of indices. assert is a development check and can be disabled with optimized Python."
+  },
+  {
+    "chapter": 2,
+    "cell": 58,
+    "topic": "Copy, local rebinding, scalar maximum and mutation",
+    "critical_note": "x=x.copy() protects the caller's NumPy data from writes x[i,j]=.... max is Python's scalar function here; np.maximum is elementwise."
+  },
+  {
+    "chapter": 2,
+    "cell": 59,
+    "topic": "Augmented assignment and mutability",
+    "critical_note": "x[i,j] += y[i,j] updates an array element. Augmented assignment may mutate a mutable object; it is not always equivalent in alias behavior to simple rebinding."
+  },
+  {
+    "chapter": 2,
+    "cell": 60,
+    "topic": "Timing, throwaway loop variable and formatted strings",
+    "critical_note": "_ is an ordinary variable conventionally used for an ignored loop value. time.time() gives a clock timestamp; .format with {0:.2f} formats argument zero to two decimals."
+  },
+  {
+    "chapter": 2,
+    "cell": 63,
+    "topic": "Single-element tuples, case-sensitive names and random arrays",
+    "critical_note": "(10,) is a tuple, (10) is an int. X and x are different names; random output changes unless random state is controlled."
+  },
+  {
+    "chapter": 2,
+    "cell": 64,
+    "topic": "Rebinding after expand_dims",
+    "critical_note": "This statement changes y from shape (10,) to (1,10). The following naive_add_matrix_and_vector expects 1D y; recreate y or select y[0] before calling it."
+  },
+  {
+    "chapter": 2,
+    "cell": 65,
+    "topic": "Tiling versus broadcasting",
+    "critical_note": "np.tile(y,(32,1)) repeats data. Broadcasting can use shape (10,) directly with (32,10) without building a full repeated Y."
+  },
+  {
+    "chapter": 2,
+    "cell": 67,
+    "topic": "Broadcasting and elementwise operations",
+    "critical_note": "Aligned trailing dimensions must match or be 1. (64,3,32,10) and (32,10) broadcast; maximum compares element pairs, not whole arrays."
+  },
+  {
+    "chapter": 2,
+    "cell": 69,
+    "topic": "Operators are overloaded; @ versus *",
+    "critical_note": "For arrays, @ denotes matrix/vector multiplication while * is elementwise. In decorator position, @ has a different grammatical role."
+  },
+  {
+    "chapter": 2,
+    "cell": 70,
+    "topic": "Accumulator, float literals and loop updates",
+    "critical_note": "z=0.0 chooses a scalar accumulator; z += x[i]*y[i] sums products. Do not confuse scalar z with the array accumulator used later."
+  },
+  {
+    "chapter": 2,
+    "cell": 71,
+    "topic": "Array allocation and nested reductions",
+    "critical_note": "np.zeros(x.shape[0]) allocates a vector; np.zeros((rows,cols)) allocates a matrix. zeros defaults to a floating dtype unless specified."
+  },
+  {
+    "chapter": 2,
+    "cell": 72,
+    "topic": "Function redefinition and decomposition",
+    "critical_note": "This def replaces the earlier naive_matrix_vector_product binding. Delegating to naive_vector_product illustrates composing functions; it is not an overload."
+  },
+  {
+    "chapter": 2,
+    "cell": 73,
+    "topic": "Row and column indexing",
+    "critical_note": "x[i,:] and y[:,j] produce 1D row/column views in NumPy, not automatically 2D matrices."
+  },
+  {
+    "chapter": 2,
+    "cell": 77,
+    "topic": "Reshape versus transpose",
+    "critical_note": "Reshape regroups elements in traversal order; transpose swaps axes. Neither means the same as numerical matrix inversion."
+  },
+  {
+    "chapter": 2,
+    "cell": 96,
+    "topic": "Classes, constructor, self and instance attributes",
+    "critical_note": "class creates a type. __init__ initializes each instance; self is an explicit conventional parameter receiving that instance."
+  },
+  {
+    "chapter": 2,
+    "cell": 96,
+    "topic": "Defaults, None, identity and functions as values",
+    "critical_note": "activation=None is an immutable default. is not None checks identity with the sentinel. activation=ops.relu passes a callable; ops.relu(...) invokes it immediately."
+  },
+  {
+    "chapter": 2,
+    "cell": 96,
+    "topic": "Dunder __call__ and property decorator",
+    "critical_note": "model(inputs) invokes __call__. @property exposes a method result as model.weights, without (). It returns a new list containing existing variable objects."
+  },
+  {
+    "chapter": 2,
+    "cell": 98,
+    "topic": "Object composition and list extension via +=",
+    "critical_note": "Sequential stores a list of layer objects. weights += layer.weights extends the list; it is not numeric array addition here."
+  },
+  {
+    "chapter": 2,
+    "cell": 99,
+    "topic": "Callable objects and object list nesting",
+    "critical_note": "Each NaiveDense is an object that can be called. len(model.weights)==4 counts two weight objects for each of two layers."
+  },
+  {
+    "chapter": 2,
+    "cell": 101,
+    "topic": "Stateful custom batch helper, math.ceil and tuple return",
+    "critical_note": "return images,labels creates a tuple. next is an ordinary method name here; this class lacks __iter__/__next__, so built-in next(batch_generator) will not work."
+  },
+  {
+    "chapter": 2,
+    "cell": 101,
+    "topic": "Batch counters, final partial batch and lack of bounds checking",
+    "critical_note": "ceil gives 469 batches for 60000/128; final batch has 96 items. The helper neither shuffles nor resets itself; calls past the end return empty slices."
+  },
+  {
+    "chapter": 2,
+    "cell": 104,
+    "topic": "Scientific notation, zip and global name lookup",
+    "critical_note": "1e-3 is a float equal to 0.001. zip pairs iterables lazily and silently stops at the shortest; learning_rate is read from global scope when the function runs."
+  },
+  {
+    "chapter": 2,
+    "cell": 104,
+    "topic": "Variable assignment API versus Python rebinding",
+    "critical_note": "w.assign(...) mutates the framework variable. w = ... would only rebind the local Python name."
+  },
+  {
+    "chapter": 2,
+    "cell": 105,
+    "topic": "Redefining a global function and closing over global optimizer",
+    "critical_note": "The second update_weights replaces the first definition. optimizer is looked up from globals. The first manual-update implementation is no longer called."
+  },
+  {
+    "chapter": 2,
+    "cell": 107,
+    "topic": "Cell magic, with-as context manager and gradient tracking",
+    "critical_note": "%%backend tensorflow belongs only to IPython. Actual bug: tf.zeros produces an ordinary tensor not automatically watched; tape.gradient returns None. Add tape.watch(x) inside the context or use tf.Variable."
+  },
+  {
+    "chapter": 2,
+    "cell": 108,
+    "topic": "Context exit and graph-based gradients",
+    "critical_note": "The with block records operations, then gradient is computed after it. A nonpersistent GradientTape is normally consumed by one gradient request. Direct Keras Variable sources verified on installed TF/Keras."
+  },
+  {
+    "chapter": 2,
+    "cell": 110,
+    "topic": "Modulo, nested loops, formatted float and forwarded arguments",
+    "critical_note": "batch_counter % 100 == 0 logs every hundred batches including zero. Bug: batch_size argument is ignored because BatchGenerator(images,labels) omits it; pass batch_size=batch_size."
+  },
+  {
+    "chapter": 2,
+    "cell": 113,
+    "topic": "Array comparisons, reduction axis and scalar formatting",
+    "critical_note": "predicted_labels == test_labels yields an array of booleans. argmax(axis=1) chooses one class per sample; mean across matches gives accuracy."
+  },
+  {
+    "chapter": 3,
+    "cell": 2,
+    "topic": "Backend selection and import state",
+    "critical_note": "Chapter 3 requests JAX as Keras backend, but local .venv lacks JAX. TensorFlow examples can run independently; for Keras examples use installed TensorFlow in a fresh process or install selected backend separately."
+  },
+  {
+    "chapter": 3,
+    "cell": 13,
+    "topic": "dtype strings versus dtype objects",
+    "critical_note": "Frameworks accept supported dtype names/objects. A Python literal list [1,2,3] does not itself carry a float32 dtype."
+  },
+  {
+    "chapter": 3,
+    "cell": 15,
+    "topic": "Keyword arguments and float shorthand",
+    "critical_note": "0. and 1. are legal float literals; shape=(3,1) is one tuple-valued keyword argument."
+  },
+  {
+    "chapter": 3,
+    "cell": 19,
+    "topic": "TensorFlow Variable versus tensor immutability",
+    "critical_note": "v.assign, assign_add and slice.assign are explicit variable mutation APIs; ordinary tensor entries do not support NumPy-style assignment."
+  },
+  {
+    "chapter": 3,
+    "cell": 24,
+    "topic": "Tuple argument and concatenation axis",
+    "critical_note": "tf.concat((a,b),axis=0) receives one tuple containing arrays. Concatenation adds along an existing axis; stacking creates a new one."
+  },
+  {
+    "chapter": 3,
+    "cell": 25,
+    "topic": "Functions with multiple arguments",
+    "critical_note": "dense(inputs,W,b) returns a computed tensor. Returning a value is separate from displaying it or mutating model state."
+  },
+  {
+    "chapter": 3,
+    "cell": 27,
+    "topic": "Automatic watching of trainable variables",
+    "critical_note": "tf.Variable is watched automatically by GradientTape; tf.constant requires explicit tape.watch, shown in next source cell."
+  },
+  {
+    "chapter": 3,
+    "cell": 29,
+    "topic": "Nested context managers, exponentiation and name shadowing",
+    "critical_note": "time is rebound to tf.Variable, hiding any earlier time module under that name in the same kernel. ** is exponentiation. Nested tapes differentiate a derivative."
+  },
+  {
+    "chapter": 3,
+    "cell": 31,
+    "topic": "Decorators transform callables",
+    "critical_note": "@tf.function decorates the new function and binds dense to the transformed callable. It does not add a separate second implementation under the same name."
+  },
+  {
+    "chapter": 3,
+    "cell": 32,
+    "topic": "Decorator factory, Boolean literal and JIT",
+    "critical_note": "@tf.function(jit_compile=True) first calls a decorator factory. True is a Python Boolean. JIT is framework/platform sensitive and not needed to learn the Python syntax."
+  },
+  {
+    "chapter": 3,
+    "cell": 34,
+    "topic": "Nested sequence arguments and probabilistic initialization",
+    "critical_note": "mean and cov receive lists and nested lists; size receives an int. These synthetic inputs support later sections, so isolated cells need explicit data setup."
+  },
+  {
+    "chapter": 3,
+    "cell": 35,
+    "topic": "Method chaining and dtype objects",
+    "critical_note": "vstack(...).astype(np.float32) evaluates stacking then conversion. np.float32 is an object, unlike the string 'float32'; either is accepted by NumPy here."
+  },
+  {
+    "chapter": 3,
+    "cell": 39,
+    "topic": "Function names later rebound to model instances",
+    "critical_note": "The name model initially refers to a function and later to framework objects. Re-running earlier training functions after rebinding model can change behavior."
+  },
+  {
+    "chapter": 3,
+    "cell": 41,
+    "topic": "Unpacking gradients and argument order",
+    "critical_note": "Source calls mean_squared_error(predictions,targets) though the declared order is targets,predictions. Squared error is symmetric so result is unchanged; keep declared order consistently because other losses are not symmetric."
+  },
+  {
+    "chapter": 3,
+    "cell": 43,
+    "topic": "Boolean masks used as plotting colors",
+    "critical_note": "predictions[:,0] > 0.5 makes one Boolean per point. This expression classifies by threshold; it does not filter unless used inside indexing."
+  },
+  {
+    "chapter": 3,
+    "cell": 44,
+    "topic": "Operator precedence and indexed array shapes",
+    "critical_note": "Unary minus, /, *, + follow Python precedence. W[0] and W[1] are 1D arrays/tensors here; broadcasting yields boundary y values. W[1]==0 would make this boundary formula invalid."
+  },
+  {
+    "chapter": 3,
+    "cell": 54,
+    "topic": "Different APIs for similar operations",
+    "critical_note": "torch.normal takes mean/std tensors here; torch.rand(3,1) takes positional dimensions. Do not assume every library uses the same parameter names."
+  },
+  {
+    "chapter": 3,
+    "cell": 58,
+    "topic": "Parameter object and trainable state",
+    "critical_note": "torch.nn.parameter.Parameter wraps a tensor for parameter registration when attached to a Module; p is a Python name pointing to that object."
+  },
+  {
+    "chapter": 3,
+    "cell": 61,
+    "topic": "Incorrect PyTorch activation namespace",
+    "critical_note": "Source uses torch.nn.relu, which is not the functional activation. Correct to torch.nn.functional.relu or torch.relu. The same issue recurs at zero-based cell79."
+  },
+  {
+    "chapter": 3,
+    "cell": 63,
+    "topic": "Autograd side effects and .grad attribute",
+    "critical_note": "backward() computes gradients and accumulates them into .grad. Reading input_var.grad fetches an attribute; it is not a method call."
+  },
+  {
+    "chapter": 3,
+    "cell": 64,
+    "topic": "Gradient accumulation across calls",
+    "critical_note": "A new forward computation followed by backward accumulates into existing .grad. input_var.grad=None resets storage for the next backward."
+  },
+  {
+    "chapter": 3,
+    "cell": 70,
+    "topic": "Signature mismatch and corrected training call",
+    "critical_note": "Bug: predictions=model(inputs) omits required W,b for preceding model(inputs,W,b). Use model(inputs,W,b). Convert NumPy inputs/targets to Torch tensors before invoking the corrected training step."
+  },
+  {
+    "chapter": 3,
+    "cell": 70,
+    "topic": "Context managers, augmented mutation and gradient reset",
+    "critical_note": "with torch.no_grad disables gradient recording during weight updates. W -= ... and b -= ... mutate leaf tensors there. Reset .grad after each update."
+  },
+  {
+    "chapter": 3,
+    "cell": 72,
+    "topic": "Inheritance, super, registered attributes and forward protocol",
+    "critical_note": "LinearModel(torch.nn.Module) subclasses a framework base. super().__init__ initializes base state. model(x) calls module machinery which invokes forward."
+  },
+  {
+    "chapter": 3,
+    "cell": 74,
+    "topic": "Array-to-tensor conversion and dtype/device consistency",
+    "critical_note": "torch.tensor(inputs) constructs a tensor; W,b,inputs,targets must use compatible dtypes and devices. Do not mix raw NumPy arrays into Torch matmul."
+  },
+  {
+    "chapter": 3,
+    "cell": 75,
+    "topic": "Iterables of parameters and optimizer state",
+    "critical_note": "model.parameters() supplies parameter objects to the optimizer. lr is the optimizer's keyword, not Python syntax."
+  },
+  {
+    "chapter": 3,
+    "cell": 76,
+    "topic": "Global bindings in functions",
+    "critical_note": "This training_step takes only inputs/targets and reads model and optimizer from globals. Later reassignments change what it sees; source functions are overwritten again in JAX section."
+  },
+  {
+    "chapter": 3,
+    "cell": 78,
+    "topic": "Functions as values and higher-order compilation",
+    "critical_note": "torch.compile(model) returns a callable wrapper bound to compiled_model. Decorator form similarly transforms a function."
+  },
+  {
+    "chapter": 3,
+    "cell": 84,
+    "topic": "Import alias from a package",
+    "critical_note": "from jax import numpy as jnp binds JAX's array namespace. Similar names do not make NumPy and JAX arrays interchangeable in every context."
+  },
+  {
+    "chapter": 3,
+    "cell": 90,
+    "topic": "Positional-argument bug and global RNG state",
+    "critical_note": "Bug: np.random.normal((3,)) passes loc=(3,), returning shape (1,), not three standard-normal draws. Use np.random.normal(size=(3,)). np.random.seed changes global NumPy RNG state."
+  },
+  {
+    "chapter": 3,
+    "cell": 90,
+    "topic": "Notebook variable reuse and seed arithmetic",
+    "critical_note": "x currently refers to a Torch tensor if cells execute top-to-bottom, not an explicitly prepared JAX noise input. Use a locally created NumPy vector in this example. seed += 1 rebinds an integer."
+  },
+  {
+    "chapter": 3,
+    "cell": 91,
+    "topic": "Explicit random keys and deterministic pure calls",
+    "critical_note": "A JAX key is a value passed to random operations. Reusing a key reproduces output; split produces new keys. Prefer key,subkey=jax.random.split(key) for repeated sampling."
+  },
+  {
+    "chapter": 3,
+    "cell": 96,
+    "topic": "Indexing the result of a call",
+    "critical_note": "jax.random.split(seed_key,num=1)[0] calls split then selects its first output. This leaves original seed_key unchanged unless explicitly rebound."
+  },
+  {
+    "chapter": 3,
+    "cell": 98,
+    "topic": "Immutable indexed updates",
+    "critical_note": "x.at[0].set(10) returns a new JAX array. Assign to new_x or x; original x remains unchanged when assigned to new_x."
+  },
+  {
+    "chapter": 3,
+    "cell": 100,
+    "topic": "Augmented assignment with immutable arrays",
+    "critical_note": "e *= d computes then rebinds e for JAX; it does not mutate the old array object. Meaning differs from NumPy in-place operations."
+  },
+  {
+    "chapter": 3,
+    "cell": 103,
+    "topic": "Functions as first-class inputs and outputs",
+    "critical_note": "jax.grad(compute_loss) takes a function object and returns a callable. compute_loss(input_var) instead calls the function immediately."
+  },
+  {
+    "chapter": 3,
+    "cell": 108,
+    "topic": "Tuple return from transformed functions",
+    "critical_note": "value_and_grad returns both original scalar output and gradient. output,gradient=grad_fn(input_var) unpacks those results."
+  },
+  {
+    "chapter": 3,
+    "cell": 115,
+    "topic": "Tuples as structured state and local unpacking",
+    "critical_note": "W,b=state binds local references to tuple members. JAX can differentiate a nested structure; state=(W,b) is a tuple, not a dictionary."
+  },
+  {
+    "chapter": 3,
+    "cell": 117,
+    "topic": "Pure update functions and return threading",
+    "critical_note": "training_step returns loss,W,b; caller must keep updated W,b. Assignment inside the function does not mutate caller names. grad_fn differentiates first positional argument by default."
+  },
+  {
+    "chapter": 3,
+    "cell": 118,
+    "topic": "Unused stale state binding",
+    "critical_note": "state=(W,b) is created once and never used by this training loop; its references do not follow later W,b rebindings. Remove it or explicitly pass/return state in a consistent design."
+  },
+  {
+    "chapter": 3,
+    "cell": 123,
+    "topic": "Changing environment after imports",
+    "critical_note": "os.environ changes do not reconfigure an already imported Keras backend. Select once before first import, using a fresh process/kernel."
+  },
+  {
+    "chapter": 3,
+    "cell": 126,
+    "topic": "Layer lifecycle, inheritance, build and call",
+    "critical_note": "Keras invokes build automatically on first input and calls call through layer.__call__. input_shape unpacking expects rank two. add_weight registers trainable variables."
+  },
+  {
+    "chapter": 3,
+    "cell": 126,
+    "topic": "Unused unpacked value and callable activation contract",
+    "critical_note": "batch_dim is bound but unused. self.activation(y) requires callable or None; storing a string without resolving it is a bug when that branch executes."
+  },
+  {
+    "chapter": 3,
+    "cell": 127,
+    "topic": "Callable object protocol through framework dispatch",
+    "critical_note": "my_dense(input_tensor) uses framework __call__, which can build/track/cast before call. Calling my_dense.call directly bypasses useful machinery."
+  },
+  {
+    "chapter": 3,
+    "cell": 131,
+    "topic": "Custom activation string error",
+    "critical_note": "Source supplies strings to SimpleDense although its constructor stores them unchanged. Correct constructor to self.activation=keras.activations.get(activation), or pass keras.ops.relu/softmax callables. Runtime verified TypeError and both repair routes with TF backend."
+  },
+  {
+    "chapter": 3,
+    "cell": 134,
+    "topic": "Strings versus instances as API configuration",
+    "critical_note": "Keras optimizer/loss/metric strings are resolved internally. This convenience does not automatically apply to arbitrary user-written classes."
+  },
+  {
+    "chapter": 3,
+    "cell": 135,
+    "topic": "Object construction in keyword arguments",
+    "critical_note": "keras.optimizers.RMSprop() produces an instance immediately. metrics=[keras.metrics.BinaryAccuracy()] stores an object in a list."
+  },
+  {
+    "chapter": 3,
+    "cell": 138,
+    "topic": "Return object from fit",
+    "critical_note": "history=model.fit(...) binds a History object, not a raw dictionary. model weights mutate while history contains measurements."
+  },
+  {
+    "chapter": 3,
+    "cell": 139,
+    "topic": "Dictionary attributes and indexing",
+    "critical_note": "history.history is a dictionary mapping metric names to lists of epoch values; access e.g. history.history['loss'][0]. The repeated name accesses a property on the variable, not a duplicated method call."
+  },
+  {
+    "chapter": 3,
+    "cell": 141,
+    "topic": "Advanced indexing, shared permutation and copies",
+    "critical_note": "An integer array inside inputs[indices_permutation] reorders rows via advanced indexing and returns a copy. Apply the same permutation to targets so pairs stay aligned."
+  },
+  {
+    "chapter": 3,
+    "cell": 141,
+    "topic": "Type conversion, fractional split and slices",
+    "critical_note": "int(0.3*len(inputs)) truncates toward zero. [:n] and [n:] partition data without overlap. validation_data=(val_inputs,val_targets) is one tuple-valued keyword argument."
+  },
+  {
+    "chapter": 3,
+    "cell": 143,
+    "topic": "Inference batches and prefix slice",
+    "critical_note": "predict(...,batch_size=128) controls inference batching, while predictions[:10] displays at most ten returned rows."
+  }
+]

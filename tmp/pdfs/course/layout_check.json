@@ -1,0 +1,256 @@
+{
+  "issues": [],
+  "page_stats": [
+    {
+      "page": 1,
+      "chars": 499,
+      "body_bottom": 801.1398
+    },
+    {
+      "page": 2,
+      "chars": 3572,
+      "body_bottom": 773.27504
+    },
+    {
+      "page": 3,
+      "chars": 4215,
+      "body_bottom": 782.0750400000001
+    },
+    {
+      "page": 4,
+      "chars": 2558,
+      "body_bottom": 702.6750000000001
+    },
+    {
+      "page": 5,
+      "chars": 2515,
+      "body_bottom": 748.3250400000001
+    },
+    {
+      "page": 6,
+      "chars": 1627,
+      "body_bottom": 502.27500000000003
+    },
+    {
+      "page": 7,
+      "chars": 1742,
+      "body_bottom": 694.9250000000001
+    },
+    {
+      "page": 8,
+      "chars": 2400,
+      "body_bottom": 764.0750400000001
+    },
+    {
+      "page": 9,
+      "chars": 2276,
+      "body_bottom": 760.75162675
+    },
+    {
+      "page": 10,
+      "chars": 2705,
+      "body_bottom": 781.97504
+    },
+    {
+      "page": 11,
+      "chars": 337,
+      "body_bottom": 114.875
+    },
+    {
+      "page": 12,
+      "chars": 2740,
+      "body_bottom": 776.62504
+    },
+    {
+      "page": 13,
+      "chars": 2677,
+      "body_bottom": 771.27504
+    },
+    {
+      "page": 14,
+      "chars": 2711,
+      "body_bottom": 756.72504
+    },
+    {
+      "page": 15,
+      "chars": 3052,
+      "body_bottom": 778.1750400000001
+    },
+    {
+      "page": 16,
+      "chars": 2752,
+      "body_bottom": 765.62504
+    },
+    {
+      "page": 17,
+      "chars": 3241,
+      "body_bottom": 791.72504
+    },
+    {
+      "page": 18,
+      "chars": 2524,
+      "body_bottom": 698.475
+    },
+    {
+      "page": 19,
+      "chars": 2506,
+      "body_bottom": 776.97504
+    },
+    {
+      "page": 20,
+      "chars": 2566,
+      "body_bottom": 735.65162675
+    },
+    {
+      "page": 21,
+      "chars": 3010,
+      "body_bottom": 767.6750400000001
+    },
+    {
+      "page": 22,
+      "chars": 2797,
+      "body_bottom": 750.50162675
+    },
+    {
+      "page": 23,
+      "chars": 1643,
+      "body_bottom": 669.875
+    },
+    {
+      "page": 24,
+      "chars": 1113,
+      "body_bottom": 403.87500000000006
+    },
+    {
+      "page": 25,
+      "chars": 2450,
+      "body_bottom": 634.325
+    },
+    {
+      "page": 26,
+      "chars": 2344,
+      "body_bottom": 733.4516267500001
+    },
+    {
+      "page": 27,
+      "chars": 2773,
+      "body_bottom": 782.4516267500001
+    },
+    {
+      "page": 28,
+      "chars": 2759,
+      "body_bottom": 735.1750000000001
+    },
+    {
+      "page": 29,
+      "chars": 2199,
+      "body_bottom": 743.50162675
+    },
+    {
+      "page": 30,
+      "chars": 2828,
+      "body_bottom": 709.875
+    },
+    {
+      "page": 31,
+      "chars": 1977,
+      "body_bottom": 651.325
+    },
+    {
+      "page": 32,
+      "chars": 2427,
+      "body_bottom": 677.7750000000001
+    },
+    {
+      "page": 33,
+      "chars": 2242,
+      "body_bottom": 738.1750000000001
+    },
+    {
+      "page": 34,
+      "chars": 2487,
+      "body_bottom": 761.27504
+    },
+    {
+      "page": 35,
+      "chars": 2567,
+      "body_bottom": 725.875
+    },
+    {
+      "page": 36,
+      "chars": 2281,
+      "body_bottom": 721.975
+    },
+    {
+      "page": 37,
+      "chars": 2531,
+      "body_bottom": 773.8250400000001
+    },
+    {
+      "page": 38,
+      "chars": 2493,
+      "body_bottom": 747.02504
+    },
+    {
+      "page": 39,
+      "chars": 2853,
+      "body_bottom": 765.77504
+    },
+    {
+      "page": 40,
+      "chars": 1637,
+      "body_bottom": 676.5250000000001
+    },
+    {
+      "page": 41,
+      "chars": 1978,
+      "body_bottom": 641.9250000000001
+    },
+    {
+      "page": 42,
+      "chars": 2909,
+      "body_bottom": 751.9250400000001
+    },
+    {
+      "page": 43,
+      "chars": 2348,
+      "body_bottom": 788.6750400000001
+    },
+    {
+      "page": 44,
+      "chars": 2568,
+      "body_bottom": 739.875
+    },
+    {
+      "page": 45,
+      "chars": 1816,
+      "body_bottom": 638.875
+    },
+    {
+      "page": 46,
+      "chars": 1833,
+      "body_bottom": 688.375
+    },
+    {
+      "page": 47,
+      "chars": 1655,
+      "body_bottom": 475.62500000000006
+    },
+    {
+      "page": 48,
+      "chars": 1618,
+      "body_bottom": 738.575
+    },
+    {
+      "page": 49,
+      "chars": 2226,
+      "body_bottom": 779.87504
+    },
+    {
+      "page": 50,
+      "chars": 2256,
+      "body_bottom": 558.2750000000001
+    }
+  ],
+  "rendered_pages": 50
+}

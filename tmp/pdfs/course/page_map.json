@@ -1,0 +1,242 @@
+[
+  {
+    "title": "Part I | Learn to read the code",
+    "page": 4,
+    "level": 0
+  },
+  {
+    "title": "1. How to use this course",
+    "page": 4,
+    "level": 1
+  },
+  {
+    "title": "2. The execution environment is part of the lesson",
+    "page": 5,
+    "level": 1
+  },
+  {
+    "title": "3. Names, values, types, and punctuation",
+    "page": 6,
+    "level": 1
+  },
+  {
+    "title": "4. Imports, attributes, calls, and unpacking",
+    "page": 7,
+    "level": 1
+  },
+  {
+    "title": "5. Read the first neural network as a Python program",
+    "page": 9,
+    "level": 1
+  },
+  {
+    "title": "Part II | Python inside chapter 2",
+    "page": 11,
+    "level": 0
+  },
+  {
+    "title": "6. Read an array before operating on it",
+    "page": 11,
+    "level": 1
+  },
+  {
+    "title": "7. Indexing, slices, and shared storage",
+    "page": 12,
+    "level": 1
+  },
+  {
+    "title": "8. Functions, loops, and vectorized operations",
+    "page": 13,
+    "level": 1
+  },
+  {
+    "title": "9. Broadcasting and matrix multiplication",
+    "page": 14,
+    "level": 1
+  },
+  {
+    "title": "10. Reshape and transpose answer different questions",
+    "page": 15,
+    "level": 1
+  },
+  {
+    "title": "11. Classes make state and behavior travel together",
+    "page": 16,
+    "level": 1
+  },
+  {
+    "title": "12. Batches are a lesson in mutable state",
+    "page": 17,
+    "level": 1
+  },
+  {
+    "title": "13. Gradients and the training loop: Python wiring",
+    "page": 19,
+    "level": 1
+  },
+  {
+    "title": "14. Practice before reading the solutions",
+    "page": 21,
+    "level": 1
+  },
+  {
+    "title": "15. Worked solutions for Part II",
+    "page": 22,
+    "level": 1
+  },
+  {
+    "title": "Part III | Python inside chapter 3",
+    "page": 24,
+    "level": 0
+  },
+  {
+    "title": "16. Recognizing what belongs to Python",
+    "page": 24,
+    "level": 1
+  },
+  {
+    "title": "17. Building the shared dataset without hidden steps",
+    "page": 25,
+    "level": 1
+  },
+  {
+    "title": "18. Reading a plot as a Python expression",
+    "page": 26,
+    "level": 1
+  },
+  {
+    "title": "19. TensorFlow: names, objects, and mutation",
+    "page": 26,
+    "level": 1
+  },
+  {
+    "title": "20. with ... as ... controls a region of execution",
+    "page": 27,
+    "level": 1
+  },
+  {
+    "title": "21. A complete TensorFlow step, read as Python",
+    "page": 28,
+    "level": 1
+  },
+  {
+    "title": "22. Decorators: passing a function instead of calling it",
+    "page": 28,
+    "level": 1
+  },
+  {
+    "title": "23. PyTorch: attributes that store gradients",
+    "page": 29,
+    "level": 1
+  },
+  {
+    "title": "24. A corrected PyTorch step with explicit state",
+    "page": 30,
+    "level": 1
+  },
+  {
+    "title": "25. Inheritance packages state with behavior",
+    "page": 31,
+    "level": 1
+  },
+  {
+    "title": "26. JAX: familiar syntax, immutable arrays",
+    "page": 32,
+    "level": 1
+  },
+  {
+    "title": "27. Random state can be implicit or explicit",
+    "page": 32,
+    "level": 1
+  },
+  {
+    "title": "28. Functions can accept and return functions",
+    "page": 33,
+    "level": 1
+  },
+  {
+    "title": "29. A complete JAX step returns its new state",
+    "page": 34,
+    "level": 1
+  },
+  {
+    "title": "30. Keras: a callable class is a learning building block",
+    "page": 34,
+    "level": 1
+  },
+  {
+    "title": "31. Lists of objects and training configuration",
+    "page": 35,
+    "level": 1
+  },
+  {
+    "title": "32. Shuffle paired data with one permutation",
+    "page": 36,
+    "level": 1
+  },
+  {
+    "title": "33. Return objects, dictionaries, and prediction batches",
+    "page": 37,
+    "level": 1
+  },
+  {
+    "title": "34. Exercises: make the state changes explicit",
+    "page": 37,
+    "level": 1
+  },
+  {
+    "title": "35. Worked solutions and reasoning",
+    "page": 38,
+    "level": 1
+  },
+  {
+    "title": "Part IV | Read, repair, and rebuild",
+    "page": 41,
+    "level": 0
+  },
+  {
+    "title": "36. Decode the notebook's backend helper",
+    "page": 41,
+    "level": 1
+  },
+  {
+    "title": "37. A debugging routine you can reuse",
+    "page": 42,
+    "level": 1
+  },
+  {
+    "title": "38. Repair cards for the supplied notebooks",
+    "page": 43,
+    "level": 1
+  },
+  {
+    "title": "39. Final lab: build a tiny prediction pipeline",
+    "page": 43,
+    "level": 1
+  },
+  {
+    "title": "40. A compact Python reference for these chapters",
+    "page": 47,
+    "level": 1
+  },
+  {
+    "title": "Sources and verification",
+    "page": 48,
+    "level": 0
+  },
+  {
+    "title": "41. What this course is based on",
+    "page": 48,
+    "level": 1
+  },
+  {
+    "title": "42. Further reading for a specific question",
+    "page": 48,
+    "level": 1
+  },
+  {
+    "title": "43. Verification and code license",
+    "page": 49,
+    "level": 1
+  }
+]
